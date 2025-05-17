@@ -786,3 +786,32 @@ html{
   margin-bottom: 10px;
 }
 
+
+
+/* === HERO MOBILNÍ ÚPRAVA – ÚVOD + O NÁS + DALŠÍ OBRÁZKOVÉ SEKCE === */
+@media screen and (max-width: 768px) {
+  .hero,
+  .hero-full,
+  .about-hero {
+    width: 100vw !important;
+    min-width: 100vw !important;
+    left: 50%;
+    right: 50%;
+    transform: translateX(-50%);
+    height: 50vh !important;
+    min-height: 270px !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;    /* Nebo 100% 100% pokud by někdo opravdu chtěl FULL stretch */
+    background-position: center center !important;
+    background-attachment: scroll !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+  /* Ošetření textu přes obrázek */
+  .hero-content,
+  .hero-text {
+    padding: 2rem 1rem !important;
+    max-width: 100vw !important;
+  }
+}
