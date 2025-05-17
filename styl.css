@@ -1,0 +1,788 @@
+/* 1) Definice fontu Poppins (musí být na úplném začátku) */
+@font-face {
+  font-family: 'Poppins';
+  src: url('fonty/Poppins-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('fonty/Poppins-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* 3) Proměnné */
+:root {
+  --primary-color: #B4302F;
+  --primary-hover: #8A2624;
+  --text-color: rgb(51, 51, 51);
+  --background-color: rgb(248, 248, 248);
+  --footer-bg: rgb(51, 51, 51);
+  --container-max-width: 1200px;
+  --light-red: #CC4D4C;
+  --grey-color: #888888;
+}
+
+/* 2) Reset stylů */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 4) Základní styl těla + lepící patička */
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+/* 5) Hlavní obsah roztáhne volné místo */
+main {
+  flex: 1;
+}
+
+
+/* 6) Hlavička */
+header.hlavicka {
+  background-color: #fff;
+  border-bottom: 2px solid #e5e5e5;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+header.hlavicka .container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Logo vlevo, menu uprostřed (přes absolutní pozicování) */
+  position: relative; /* Pro absolutní pozicování navigace */
+}
+.logo {
+  width: 200px; /* Nebo dle potřeby */
+  height: auto;
+}
+
+
+/* 7) Navigační menu */
+nav {
+  position: absolute; /* Vycentrování menu */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px; /* Mezery mezi položkami menu */
+}
+nav ul li a {
+  text-decoration: none;
+  color: #222; /* Barva textu odkazu */
+  font-weight: 800; /* Tučnější písmo pro hlavní položky */
+  transition: color 0.3s ease;
+}
+nav ul li a:hover,
+nav ul li a.active { /* Přidán styl pro aktivní odkaz */
+  color: var(--primary-color); /* Červená barva při najetí nebo aktivní */
+}
+
+/* === DROPDOWN MENU === */
+nav ul li {
+  position: relative; /* Pro pozicování dropdownu */
+}
+nav ul li.dropdown:hover .dropdown-content {
+  display: block; /* Zobrazí dropdown při najetí na "Technika" */
+}
+nav ul li .dropdown-content {
+  display: none; /* Skrytý defaultně */
+  position: absolute;
+  top: 100%; /* Pod rodičovským prvkem */
+  left: 0;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  min-width: 200px; /* Minimální šířka dropdownu */
+  z-index: 100;
+  flex-direction: column; /* Položky pod sebou */
+}
+nav ul li .dropdown-content li {
+  display: block;
+  width: 100%;
+}
+nav ul li .dropdown-content li a {
+  padding: 10px 15px; /* Vnitřní odsazení odkazů v dropdownu */
+  display: block; /* Aby odkaz zabral celou šířku */
+  white-space: nowrap; /* Zabrání zalomení textu odkazu */
+  font-weight: normal; /* Normální váha písma pro dropdown položky */
+}
+nav ul li .dropdown-content li a:hover {
+  background-color: #f0f0f0; /* Pozadí při najetí na položku dropdownu */
+  color: var(--primary-color); /* Barva textu při najetí */
+}
+/* === ŠIPEČKA U "TECHNIKA" === */
+nav ul li.dropdown > a::after {
+  content: " ▼"; /* Přidá šipku dolů */
+  font-size: 0.75em;
+  margin-left: 4px;
+}
+
+
+/* 8) Hero sekce */
+.hero {
+  position: relative;
+  background-image: url('obrazky/stavba.png');
+  background-size: cover;
+  background-position: center;
+  height: 60vh; /* Výška hero sekce */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.hero::before { /* Překryv pro ztmavení obrázku na pozadí */
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Černé s průhledností */
+  z-index: 1;
+}
+.hero-content {
+  position: relative;
+  z-index: 2; /* Nad překryvem */
+  max-width: 800px;
+  padding: 20px;
+  color: #fff; /* Bílý text */
+}
+.hero-content h1 {
+  font-size: 3rem; /* Velikost hlavního nadpisu */
+  margin-bottom: 10px;
+}
+.hero-content p {
+  font-size: 1.3rem; /* Velikost textu */
+  margin-bottom: 10px;
+}
+.cta-button { /* Tlačítko "Zjistit více" */
+  display: inline-block;
+  background-color: var(--primary-color); /* Červené pozadí */
+  color: #fff; /* Bílý text */
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 800;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+.cta-button:hover {
+  background-color: var(--primary-hover); /* Tmavší červená při najetí */
+}
+
+
+/* 9) Obecné sekce */
+section {
+  padding: 40px 20px;
+  background-color: #fff; /* Bílé pozadí pro většinu sekcí */
+  margin: 20px 0; /* Vertikální mezery mezi sekcemi */
+  border-radius: 8px; /* Zaoblené rohy */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Jemný stín */
+}
+
+
+/* 10) O nás */
+.about { /* Specifické styly pro sekci "O nás", pokud jsou potřeba navíc k obecným 'section' */
+  padding: 60px 20px;
+  background-color: #fff;
+}
+.about .container {
+  max-width: 900px; /* Užší kontejner pro text */
+  margin: 0 auto;
+}
+.about h2 { /* Nadpis v sekci "O nás" */
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--primary-color); /* Červená barva nadpisu */
+}
+.about p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  text-align: justify; /* Zarovnání do bloku */
+  color: var(--text-color); /* Standardní barva textu */
+}
+
+
+/* 11) Služby */
+.services {
+  padding: 60px 20px;
+  background-color: #f9f9f9; /* Lehce odlišné pozadí pro sekci služeb */
+}
+.services .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.services h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--primary-color);
+}
+.services .intro { /* Úvodní text v sekci služeb */
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 40px;
+  color: var(--text-color);
+}
+/* Původní .service-boxes a .service-box nejsou v HTML použity, */
+/* místo nich se používá .tech-grid a .tech-item i pro služby. */
+/* Pokud byste chtěli specifické styly pro boxy služeb, můžete je zde definovat */
+/* nebo přejmenovat .tech-item v HTML stránce sluzby.html na .service-item a stylovat zde. */
+
+
+/* 12) Technologie (použito i pro Služby v HTML) */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responzivní mřížka */
+  gap: 30px; /* Mezery mezi položkami */
+  padding: 20px 0;
+}
+.tech-item {
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  color: #222;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px; /* Sníženo z 20px na 10px pro kompaktnější vzhled, původně bylo 20px */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease-in-out;
+  border: 3px solid transparent; /* Pro hover efekt rámečku */
+}
+.tech-item:hover {
+  transform: scale(1.02); /* Lehké zvětšení při najetí */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary-color); /* Červený rámeček při najetí */
+}
+.tech-item img { /* Obrázky v .tech-item */
+  width: 100%;
+  height: auto; /* Zachování poměru stran, původně bylo 200px */
+  /* height: 200px; /* Původní fixní výška, zvažte 'auto' nebo 'object-fit' */
+  /* object-fit: cover; */ /* Pokud chcete fixní výšku a ořez */
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+/* Následující :hover img efekt je trochu agresivní, zvažte jeho ponechání/úpravu */
+.tech-item:hover img {
+  /* border-color: var(--primary-color); */ /* Rámeček obrázku je již na .tech-item */
+  box-shadow: 0 0 0 4px rgba(169, 0, 0, 0.2); /* Vnější stín obrázku */
+}
+.tech-item h4 {
+  margin: 10px 0 5px;
+  font-size: 1.2em;
+  color: var(--primary-color);
+}
+.tech-item p {
+  font-size: 0.95em;
+  color: #444;
+}
+/* Styly pro nadpisy v sekci Technika */
+.technika h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.2em;
+  text-align: center;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+.technika .intro {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1em;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 40px auto;
+  color: #444;
+  line-height: 1.6;
+}
+.technika h3 { /* Podnadpisy v sekci Technika (např. Rypadla...) */
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.6em;
+  margin-top: 60px; /* Větší horní mezera */
+  margin-bottom: 20px;
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color); /* Červené podtržení */
+  display: inline-block; /* Aby podtržení bylo jen pod textem */
+  padding-bottom: 4px;
+}
+
+
+/* 13) Kontakt */
+.kontakt { /* Sekce Kontakt */
+  padding: 40px 20px;
+  background-color: #f8f8f8; /* Světle šedé pozadí */
+  text-align: center;
+}
+.kontakt h2 {
+  color: var(--primary-color);
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+.kontakt-info { /* Bloky s kontaktními informacemi */
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+.kontakt-info h3 {
+  color: var(--primary-color);
+  font-size: 1.3em;
+  margin-bottom: 5px;
+}
+.kontakt-info a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+.kontakt-info a:hover {
+  text-decoration: underline;
+}
+.kontakt-mapa iframe { /* Mapa */
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+}
+
+/* 14) Interaktivní karty služeb - NEPOUŽITO V AKTUÁLNÍM HTML, ponecháno pro případné budoucí použití */
+/* .service-card { ... } */
+/* .service-card input[type="checkbox"] { ... } */
+/* .service-image { ... } */
+/* .service-image img { ... } */
+/* .service-image:hover img { ... } */
+/* .service-image h3 { ... } */
+/* .service-description { ... } */
+/* .service-card input[type="checkbox"]:checked ~ .service-description { ... } */
+
+
+/* 15) Statický grid služeb - NEPOUŽITO V AKTUÁLNÍM HTML, .tech-grid se používá místo toho */
+/* .service-grid { ... } */
+/* .service-grid .service-card { ... } */
+/* .service-grid .service-card:hover { ... } */
+
+
+/* 16) Interaktivní sekce služeb - NEPOUŽITO V AKTUÁLNÍM HTML */
+/* .sluzba-interaktivni { ... } */
+/* .sluzba-interaktivni input[type="checkbox"] { ... } */
+/* .sluzba-label { ... } */
+/* .sluzba-label img { ... } */
+/* .sluzba-label:hover img { ... } */
+/* .sluzba-label h3 { ... } */
+/* .sluzba-text { ... } */
+/* .sluzba-interaktivni input[type="checkbox"]:checked ~ .sluzba-text { ... } */
+
+
+/* 17) HERO OBRAZEK NA CELOU STRÁNKU (použito v index.html a onas.html) */
+.hero-full {
+  position: relative;
+  height: 100vh; /* Výška přes celou obrazovku */
+  overflow: hidden; /* Skryje případný přesah obrázku */
+}
+.hero-full img { /* Pokud by se obrázek vkládal přímo přes <img> tag */
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Zajistí pokrytí bez deformace */
+  display: block;
+}
+
+
+/* 18) Text přes obrázek (Hero Text) */
+.hero-full {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  position: relative;
+  padding: 0;
+}
+
+.hero-text {
+  width: 100vw;
+  height: 100vh;
+  padding: 4rem 5vw;
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  text-align: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+  font-size: 1.3rem; /* velikost písma jako na úvodu */
+}
+
+.hero-text p {
+  max-width: 1200px;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+
+/* === Patička === */
+footer {
+  background-color: var(--footer-bg);
+  color: #fff;
+  padding: 20px 0; /* Sníženo odsazení, původně 40px 0 20px */
+  font-size: 0.9rem; /* Mírně zmenšeno písmo */
+  text-align: center; /* Zarovnání textu v patičce na střed */
+}
+footer .container p { /* Stylování odstavce v patičce */
+    margin: 0; /* Odstranění defaultní marže odstavce */
+}
+/* .copyright class je definován, ale v HTML není použit na <p> tagu v patičce. */
+/* Pokud byste chtěli specifické styly pro copyright text, přidejte třídu .copyright k <p> v HTML. */
+.copyright {
+  text-align: center;
+  font-size: 0.85rem;
+  background: rgba(0,0,0,0.15); /* Pokud by měl mít copyright jiné pozadí */
+  padding: 10px 20px;
+}
+
+
+/* 19) Hamburger menu */
+.hamburger {
+  display: none; /* Skrytý na větších obrazovkách */
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: var(--primary-color); /* Červená barva ikony */
+  cursor: pointer;
+  z-index: 1001; /* Nad ostatními prvky v hlavičce */
+  position: absolute; /* Pozice vpravo nahoře */
+  top: 50%; /* Vertikální zarovnání na střed hlavičky */
+  transform: translateY(-50%);
+  right: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  header.hlavicka .container {
+    height: 60px; /* Výška hlavičky na mobilu */
+    padding: 0 15px; /* Menší padding na mobilu */
+    justify-content: space-between; /* Logo vlevo, hamburger vpravo */
+  }
+  .logo {
+    width: 150px; /* Menší logo na mobilu */
+  }
+  nav { /* Navigace na mobilu */
+    position: static; /* Zrušení absolutního pozicování */
+    transform: none;
+    width: 100%; /* Plná šířka */
+  }
+  nav ul {
+    display: none; /* Skryté defaultně */
+    flex-direction: column; /* Položky pod sebou */
+    gap: 0; /* Odstraněny mezery, řešeno paddingem li a */
+    font-size: 1rem; /* Větší písmo pro lepší čitelnost */
+    background-color: white;
+    position: absolute; /* Pod hlavičkou */
+    top: 60px; /* Výška hlavičky */
+    left: 0;
+    width: 100%;
+    padding: 10px 0; /* Vertikální padding */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-top: 1px solid #e5e5e5; /* Oddělovací čára */
+  }
+  nav ul.open { /* Když je menu otevřené */
+    display: flex;
+  }
+  nav ul li a {
+    padding: 12px 20px; /* Větší klikací plocha */
+    display: block; /* Zabere celou šířku */
+    border-bottom: 1px solid #f0f0f0; /* Oddělovače mezi položkami */
+  }
+  nav ul li:last-child a {
+    border-bottom: none; /* Bez oddělovače u poslední položky */
+  }
+  nav ul li .dropdown-content { /* Dropdown na mobilu */
+    position: static; /* Normální tok dokumentu */
+    box-shadow: none;
+    padding-left: 20px; /* Odsazení podpoložek */
+    background-color: #f9f9f9; /* Lehce jiné pozadí pro podmenu */
+  }
+  nav ul li.dropdown:hover .dropdown-content {
+    display: none; /* Na mobilu se dropdown neotevírá hoverem, ale je součástí hlavního menu, pokud je rozbalené */
+  }
+  nav ul li.dropdown > a::after {
+    float: right; /* Šipka vpravo */
+  }
+  .hamburger {
+    display: block; /* Zobrazí hamburger ikonu */
+    /* top a right jsou již nastaveny globálně, zde není třeba měnit */
+  }
+}
+
+/* === Patička a globální akcenty (doplňující) === */
+/* :root { --light-red: rgb(250, 0, 0); } Již definováno výše */
+
+/* Jednotný červený akcent */
+.cervene { color: var(--primary-color); }
+
+
+/* === Sekční nadpisy: tmavý box přes celou šířku stránky === */
+.services h2,
+.technika h2,
+.kontakt h2,
+.about h2,
+section h2.section-box {
+  background-color: var(--footer-bg);
+  color: var(--primary-color);
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 0; /* Odstranění horní marže sekce, pokud je nadpis první */
+  margin-bottom: 40px; /* Mezera pod nadpisem */
+  margin-left: calc(50% - 50vw); /* „vysune“ blok z kontejneru */
+  margin-right: calc(50% - 50vw);
+  width: 100vw; /* šířka celého viewportu */
+}
+/* Pokud je sekce první na stránce (přiléhá k hlavičce), můžeme chtít jinou horní marži */
+main > section:first-child > h2.section-box,
+main > section:first-child > .services h2, /* atd. pro specifické případy */
+main > section:first-child > .technika h2,
+main > section:first-child > .kontakt h2,
+main > section:first-child > .about h2 {
+    /* margin-top: 0; */ /* Již řešeno výše, ale explicitně pro první sekci */
+}
+
+
+/* === Podsekční nadpisy (h3) – tmavý box přes celou šířku === */
+.technika h3, /* Tento styl již existoval a byl specifičtější, ponechávám ho */
+/* .services h3,  Tento styl by ovlivnil H3 v .tech-item, což není žádoucí */
+section h3.subsection-box { /* Použijte tuto třídu, pokud chcete H3 přes celou šířku */
+  background-color: var(--footer-bg);
+  color: var(--primary-color);
+  text-align: center;
+  padding: 14px 0;
+  margin: 30px calc(50% - 50vw) 20px;
+  width: 100vw;
+  border-bottom: none; /* Zruší původní podtržení, pokud bylo */
+}
+
+
+/* === SPECIFIKACE BEZ ODRÁŽEK === */
+.tech-item ul.specs{
+  list-style-type: none !important; /* žádné puntíky */
+  padding-left: 0 !important; /* zruš levé odsazení */
+  margin: 10px 0 0 0; /* Přidána malá horní marže */
+  font-size: 0.9em; /* Menší písmo pro specifikace */
+  text-align: left; /* Zarovnání textu specifikací doleva v rámci .tech-item */
+  padding: 0 10px; /* Malé vnitřní odsazení */
+}
+.tech-item ul.specs li {
+    margin-bottom: 4px; /* Mezera mezi položkami specifikací */
+}
+.tech-item ul.specs li::marker{content:"";}
+
+
+/* === Vlastní posuvník (Chrome, Edge, Safari) === */
+::-webkit-scrollbar{
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track{
+  background: var(--footer-bg);
+}
+::-webkit-scrollbar-thumb{
+  background: var(--primary-color);
+  border-radius: 6px;
+  border: 2px solid var(--footer-bg);
+}
+::-webkit-scrollbar-thumb:hover{
+  background: var(--light-red, var(--primary-color));
+}
+
+/* === Firefox (podpora od verze 64) === */
+html{
+  scrollbar-color: var(--primary-color) var(--footer-bg); /* thumb track */
+  scrollbar-width: thin;
+}
+
+/* === Hover efekty pro ikonky v patičce === */
+.footer-icons img {
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: grayscale(100%);
+}
+.footer-icons img:hover {
+  transform: scale(1.2) translateY(-2px);
+  filter: grayscale(0%) drop-shadow(0 0 5px var(--primary-color));
+}
+
+
+/* === ACTIVE ICON HIGHLIGHT === */
+@media screen and (max-width: 768px) {
+  .footer-icons a.active img {
+    filter: none;
+    transform: scale(1.2);
+  }
+}
+
+/* === FIXED BOTTOM NAV + HERO OVERRIDES FOR MOBILE === */
+@media screen and (max-width: 768px) {
+  .footer-icons {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background: #ffffff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 8px 0;
+    box-shadow: 0 -2px 6px rgba(0,0,0,0.12);
+    z-index: 1001;
+  }
+  body {
+    padding-bottom: 72px;
+  }
+  .hero-full {
+    height: auto !important;
+    min-height: auto !important;
+  }
+  .hero-text {
+    width: 100% !important;
+    height: auto !important;
+    padding: 2rem 1rem !important;
+  }
+  .footer-icons a.active img {
+    filter: none;
+    transform: scale(1.2);
+  }
+}
+
+/* === POZADÍ BAGŘÍKY PRO SEKCE === */
+#sluzby, #kontakt, .technika {
+  background-image: url("bagriky.png");
+  background-repeat: repeat;
+  background-size: 300px auto;
+  background-position: center;
+  background-attachment: fixed;
+  opacity: 0.98;
+}
+
+/* === GALERIE SEKCE SLUŽBY === */
+.lightbox-gallery {
+  position: fixed;
+  z-index: 2000;
+  left: 0; top: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gallery-content {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 900px;
+  width: 90vw;
+  max-height: 80vh;
+  overflow-y: auto;
+  text-align: center;
+  position: relative;
+}
+.gallery-content img {
+  max-width: 250px;
+  max-height: 250px;
+  margin: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+}
+.close-gallery {
+  position: absolute;
+  top: 16px;
+  right: 24px;
+  font-size: 2rem;
+  color: #b4302f;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 100;
+}
+@media (max-width: 600px) {
+  .gallery-content img {
+    max-width: 90vw;
+    max-height: 200px;
+  }
+}
+
+.open-gallery {
+  display: inline-block;
+  margin-top: 12px;
+  background: var(--primary-color, #B4302F);
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  border: none;
+  padding: 10px 26px;
+  border-radius: 25px;
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+  box-shadow: 0 2px 8px rgba(180,48,47,0.07);
+  cursor: pointer;
+  transition: background 0.18s, box-shadow 0.18s, transform 0.15s;
+}
+.open-gallery:hover, .open-gallery:focus {
+  background: var(--primary-hover, #8A2624);
+  box-shadow: 0 4px 18px rgba(180,48,47,0.14);
+  transform: translateY(-2px) scale(1.03);
+  outline: none;
+}
+.gallery-title {
+  font-family: 'Poppins', sans-serif;
+  color: #b4302f;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  margin-top: 0;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+.gallery-content {
+  background: #fff;
+  border-radius: 18px;
+  padding: 24px;
+  max-width: 900px;
+  width: 90vw;
+  max-height: 80vh;
+  overflow-y: auto;
+  text-align: center;
+  position: relative;
+  border: 4px solid #b4302f;   /* Červený rámeček */
+  box-shadow: 0 8px 40px rgba(0,0,0,0.17);
+}
+
+#img-zoom-large {
+  transition: transform 0.13s;
+}
+#img-zoom-large:active {
+  transform: scale(0.98);
+}
+
+.tech-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  /* ...další tvé styly .tech-item... */
+}
+.tech-item button.open-gallery {
+  margin-top: auto;
+  margin-bottom: 10px;
+}
+

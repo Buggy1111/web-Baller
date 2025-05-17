@@ -1,0 +1,8 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://www.stavbyballer.cz/sitemap.xml
+
+# Nepovolujeme přístup do systémových adresářů (pokud bys je měl)
+# Disallow: /admin/
+# Disallow: /tmp/

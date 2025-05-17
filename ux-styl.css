@@ -1,0 +1,179 @@
+
+/* === HERO EFEKT – dýchající pozadí === */
+.hero-full {
+  animation: breatheBg 8s ease-in-out infinite;
+}
+
+@keyframes breatheBg {
+  0%, 100% {
+    background-size: 100%;
+  }
+  50% {
+    background-size: 105%;
+  }
+}
+
+/* === CTA BUTTON – pomalé blikání === */
+.cta-button {
+  animation: blinkSlow 3s infinite ease-in-out;
+}
+
+@keyframes blinkSlow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* === FADE-IN CELÉ MŘÍŽKY === */
+.tech-grid {
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === POSTUPNÉ NAČÍTÁNÍ KARET === */
+.tech-item {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInCard 0.8s ease forwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-bottom 0.3s ease;
+  border-bottom: 4px solid transparent;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  color: #111;
+}
+
+.tech-item:nth-child(1) { animation-delay: 0.1s; }
+.tech-item:nth-child(2) { animation-delay: 0.2s; }
+.tech-item:nth-child(3) { animation-delay: 0.3s; }
+.tech-item:nth-child(4) { animation-delay: 0.4s; }
+.tech-item:nth-child(5) { animation-delay: 0.5s; }
+.tech-item:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeInCard {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === HOVER EFEKT NA KARTU === */
+.tech-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border-bottom: 4px solid #e63946;
+}
+
+/* === ZOOM OBRÁZKU === */
+.sluzba-img-grid {
+  transition: transform 0.4s ease;
+}
+.tech-item:hover .sluzba-img-grid {
+  transform: scale(1.05);
+}
+
+/* === NADPISY S PODTRŽENÍM === */
+.tech-item h4 {
+  position: relative;
+  display: inline-block;
+}
+.tech-item h4::after {
+  content: "";
+  display: block;
+  width: 0%;
+  height: 2px;
+  background: #e63946;
+  transition: width 0.3s ease;
+  margin-top: 5px;
+}
+.tech-item:hover h4::after {
+  width: 100%;
+}
+
+/* === ZMĚNA BARVY TEXTU PARAGRAFU === */
+.tech-item p {
+  transition: color 0.3s ease;
+}
+.tech-item:hover p {
+  color: #555;
+}
+
+
+/* === UX PRO KONTAKT === */
+.kontakt-info {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInKontakt 1s ease forwards;
+  background: white;
+  color: #111;
+  padding: 20px;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 20px;
+}
+.kontakt-info:nth-of-type(1) { animation-delay: 0.2s; }
+.kontakt-info:nth-of-type(2) { animation-delay: 0.4s; }
+
+.kontakt-info:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeInKontakt {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.kontakt-mapa iframe {
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+
+/* === FADE-IN PRO SEKCI O NÁS === */
+.hero-text {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInO 1s ease forwards;
+}
+
+@keyframes fadeInO {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* === UNIVERZÁLNÍ ZOOM NA IMG === */
+.tech-item img {
+  transition: transform 0.4s ease;
+}
+.tech-item:hover img {
+  transform: scale(1.05);
+}
+
+
+/* === HERO SECTION: upraveno pro mobil === */
+.hero-full {
+  min-height: 100vh;
+  height: auto;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-full {
+    min-height: auto;
+    height: auto !important;
+    padding: 3rem 1rem;
+    overflow: visible;
+  }
+  .hero-text {
+    padding: 1rem;
+  }
+}
