@@ -5,11 +5,14 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Kontakt - Stavby Baller s.r.o.</title>
-<meta content="Kontaktujte Stavby Baller s.r.o. – výkopové a stavební práce v Moravskoslezském a Olomouckém kraji. Telefon, e-mail, mapa." name="description"/>
+<link rel="canonical" href="https://www.stavbyballer.cz/kontakt.html"/>
+<meta name="description" content="Kontakt – Stavby Baller s.r.o. – výkopové práce, demolice, autodoprava, kontejnery. Adresa, telefon, e‑mail a mapa sídla ve Spálově."/>
 <link rel="stylesheet" href="styl.css" />
 <link rel="stylesheet" href="ux-styl.css" />
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 <link href="favicon.ico" rel="icon" type="image/x-icon"/>
+<link rel="stylesheet" href="fixed_styl.css">
+<link rel="stylesheet" href="mobile_patch.css">
 <meta content="website" property="og:type"/>
 <meta property="og:locale" content="cs_CZ"/>
 <meta content="Stavby Baller s.r.o. – Výkopové a stavební práce" property="og:title"/>
@@ -98,7 +101,19 @@
   }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Domů", "item": "https://www.stavbyballer.cz/" },
+    { "@type": "ListItem", "position": 2, "name": "Kontakt", "item": "https://www.stavbyballer.cz/kontakt.html" }
+  ]
+}
+</script>
 </head>
+<script src="nav_final.js" defer></script>
+<script src="nav_mobile.js" defer></script>
 <body>
 <header class="hlavicka">
 <div class="container">
@@ -174,6 +189,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 </script>
+<script src="sidepanel.js" defer></script>
 <script src="nav.js" defer></script>
 </body>
 </html>
