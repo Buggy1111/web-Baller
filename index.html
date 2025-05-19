@@ -8,6 +8,7 @@
 <meta content="výkopové práce, demolice, autodoprava, kontejnery, stavební technika, Moravskoslezský kraj, Olomoucký kraj" name="keywords"/>
 <meta content="Stavby Baller s.r.o." name="author"/>
 <title>Stavby Baller s.r.o. | Výkopové práce, demolice, autodoprava</title>
+<link rel="canonical" href="https://www.stavbyballer.cz/">
 <link rel="stylesheet" href="styl.css" />
 <link rel="stylesheet" href="ux-styl.css" />
 <link href="favicon.ico" rel="icon" type="image/x-icon"/>
@@ -32,7 +33,7 @@
     "@type": "PostalAddress",
     "streetAddress": "Spálov č. 30",
     "addressLocality": "Spálov",
-    "postalCode": "74237",
+    "postalCode": "742 37",
     "addressCountry": "CZ"
   },
   "geo": {
@@ -53,54 +54,67 @@
     "@type": "OfferCatalog",
     "name": "Služby",
     "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Výkopové práce"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Demolice"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Autodoprava a kontejnerová doprava"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Spodní stavby"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Inženýrské sítě"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Ukládání kamenů"
-        }
-      }
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Výkopové práce" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Demolice" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Autodoprava a kontejnerová doprava" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Spodní stavby" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Inženýrské sítě" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ukládání kamenů" } }
     ]
-  }
+  },
+  "sameAs": [
+    "https://www.facebook.com/stavbyballer",
+    "https://www.instagram.com/stavbyballer",
+    "https://goo.gl/maps/place/Spálov+30,+742+37+Spálov/@49.7054092,17.7305227,73m/data=!3m1!1e3!4m6!3m5!1s0x4713c62207b652a3:0xde7e8d802e07f095!8m2!3d49.7053603!4d17.7306896!16s%2Fg%2F11crwt7j9q?entry=ttu&g_ep=EgoyMDI1MDUxMy4xIKXMDSoASAFQAw%3D%3D"
+  ],
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "telephone": "+420604682281",
+      "contactType": "customer service",
+      "areaServed": "CZ",
+      "availableLanguage": ["cs"]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Domů", "item": "https://www.stavbyballer.cz/" }
+  ]
 }
 </script>
 </head>
 <body>
+<!-- Side Panel -->
+<div class="side-panel" id="sidePanel">
+  <div class="panel-content">
+    <strong>Pracujeme v Moravskoslezském a Olomouckém kraji</strong><br>
+    <small>Případně i po celé ČR</small>
+    <p class="services-title"><strong>Nabízíme:</strong></p>
+    <ul class="services-list">
+      <li><a href="sluzby.html#vykopy">Zemní a výkopové práce</a></li>
+      <li><a href="sluzby.html#spodni-stavby">Spodní stavby</a></li>
+      <li><a href="sluzby.html#demolice">Demoliční činnost</a></li>
+      <li><a href="sluzby.html#autodoprava">Autodoprava</a></li>
+      <li><a href="sluzby.html#kontejnery">Kontejnerová doprava</a></li>
+      <li><a href="sluzby.html#preprava-techniky">Přeprava techniky</a></li>
+      <li><a href="sluzby.html#inzenyrske-site">Inženýrské sítě</a></li>
+      <li><a href="sluzby.html#kanalizace">Kanalizace</a></li>
+      <li><a href="sluzby.html#ukladani-kamenu">Ukládání kamenů</a></li>
+    </ul>
+    <p class="tagline">Těšíme se na spolupráci s vámi!</p>
+    <strong>Zbyněk Baller</strong><br>
+    <a href="tel:+420604682281" class="phone">📞 +420 604 682 281</a>
+  </div>
+  <div class="toggle-button" onclick="togglePanel()">
+    <div class="arrow"></div>
+  </div>
+</div>
+
 <header class="hlavicka">
 <div class="container">
 <img alt="Logo Stavby Baller s.r.o." class="logo" src="obrazky/logo_transparent.webp" loading="lazy"/>

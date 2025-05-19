@@ -836,20 +836,6 @@ html{
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .tech-item p, .tech-item ul, .tech-item .popis {
   margin-bottom: 14px !important;
 }
@@ -895,3 +881,376 @@ html{
 .tech-item button.open-gallery {
   margin-top: 10px;
 }
+
+/* Základní styl panelu */
+.side-panel {
+  position: fixed;
+  top: 50%;
+  left: -240px; /* zasunutý stav */
+  transform: translateY(-50%);
+  width: 240px;
+  background-color: #2c2c2c;
+  color: #fff;
+  padding: 20px;
+  border-radius: 0 8px 8px 0;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+  transition: left 0.3s ease;
+  z-index: 9999;
+}
+.side-panel.open {
+  left: 0;
+}
+.panel-content {
+  font-size: 15px;
+  line-height: 1.5;
+}
+.phone {
+  display: block;
+  margin-top: 12px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #ff4646;
+}
+
+/* Tlačítko se šipkou */
+.toggle-button {
+  position: absolute;
+  top: 40%;
+  right: -24px;
+  width: 24px;
+  height: 48px;
+  background-color: #ff4646;
+  border-radius: 0 5px 5px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.arrow {
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 10px solid white;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0%   { transform: scale(1);   opacity: 1; }
+  50%  { transform: scale(1.2); opacity: 0.7; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+/* Responzivita: tablety (šířka 600–1024px) */
+@media (min-width: 600px) and (max-width: 1024px) {
+  .side-panel {
+    width: 260px;
+    left: -260px;
+  }
+  .side-panel.open {
+    left: 0;
+  }
+  .panel-content { font-size: 16px; }
+  .phone { font-size: 18px; }
+}
+
+/* (Volitelně) na desktop nad 1024px můžeš mít širší nebo úplně jiný styl */
+@media (min-width: 1025px) {
+  .side-panel {
+    width: 280px;
+    left: -280px;
+  }
+  .toggle-button {
+    right: -28px;
+    width: 28px;
+    height: 56px;
+  }
+  .panel-content { font-size: 17px; }
+  .phone { font-size: 19px; }
+}
+
+/* Šipečka – pulzující efekt */
+.arrow {
+  /* už by tam měla být definice šipečky jako trojúhelníku */
+  animation: pulse 1.5s infinite;
+}
+
+/* Klíčové snímky pro pulzování */
+@keyframes pulse {
+  0%   { transform: scale(1);   opacity: 1; }
+  50%  { transform: scale(1.2); opacity: 0.7; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+/* Pulzující červené pozadí toggle-buttonu */
+.toggle-button {
+  /* už máte puls šipky, teď přidáme i puls barvy */
+  animation: bgPulse 2s infinite ease-in-out;
+}
+
+/* Klíčové snímky pro pulsování pozadí */
+@keyframes bgPulse {
+  0%, 100% {
+    background-color: #ff4646;
+    box-shadow: none;
+  }
+  50% {
+    background-color: #ff6f6f;
+    box-shadow: 0 0 8px rgba(255, 70, 70, 0.6);
+  }
+}
+
+/* ===== Boční panel ===== */
+.side-panel {
+  position: fixed;
+  top: 50%;
+  left: -240px;
+  transform: translateY(-50%);
+  width: 240px;
+  background-color: #2c2c2c;
+  color: #fff;
+  padding: 20px;
+  border-radius: 0 8px 8px 0;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+  transition: left 0.3s ease;
+  z-index: 9999;
+}
+.side-panel.open {
+  left: 0;
+}
+.panel-content {
+  font-size: 15px;
+  line-height: 1.5;
+}
+.panel-content small {
+  display: block;
+  font-size: 13px;
+  color: #ccc;
+  margin-bottom: 8px;
+}
+.services-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+  font-size: 13px;
+  color: #eee;
+  line-height: 1.4;
+}
+.services-list li::before {
+  content: "•";
+  margin-right: 6px;
+  color: #ff4646;
+}
+.services-list li a {
+  color: #eee;
+  text-decoration: none;
+}
+.services-list li a:hover {
+  text-decoration: underline;
+}
+.tagline {
+  font-size: 14px;
+  font-style: italic;
+  margin: 10px 0;
+  color: #ffb3b3;
+}
+.phone a {
+  color: #ff4646;
+  text-decoration: none;
+}
+.phone a:hover {
+  text-decoration: underline;
+}
+.toggle-button {
+  animation: bgPulse 2s infinite ease-in-out;
+}
+.arrow {
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0%   { transform: scale(1);   opacity: 1; }
+  50%  { transform: scale(1.2); opacity: 0.7; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+@keyframes bgPulse {
+  0%, 100% {
+    background-color: #ff4646;
+    box-shadow: none;
+  }
+  50% {
+    background-color: #ff6f6f;
+    box-shadow: 0 0 8px rgba(255, 70, 70, 0.6);
+  }
+}
+@media (min-width: 600px) and (max-width: 1024px) {
+  .side-panel { width: 260px; left: -260px; }
+  .side-panel.open { left: 0; }
+  .panel-content { font-size: 16px; }
+  .phone a { font-size: 18px; }
+}
+@media (min-width: 1025px) {
+  .side-panel { width: 280px; left: -280px; }
+  .toggle-button { right: -28px; width: 28px; height: 56px; }
+  .panel-content { font-size: 17px; }
+  .phone a { font-size: 19px; }
+}
+
+/* === Boční panel – sladění barev a fontu === */
+.side-panel {
+  font-family: 'Poppins', sans-serif;
+  background-color: #ffffff;            /* bílé pozadí jako zbytek stránky */
+  color: #333333;                       /* tmavě šedý text pro lepší čitelnost */
+  border-left: 4px solid #ff4646;       /* akcentní červená linka */
+}
+
+.side-panel.open {
+  left: 0;
+}
+
+.panel-content small {
+  color: #666666;                       /* jemnější šedá pro podtext */
+}
+
+.services-list li::before {
+  color: #ff4646;                       /* kulatý odrážkový puntík v červené */
+}
+
+.services-list li a {
+  color: #333333;                       /* odkaz ve stejném odstínu textu */
+}
+.services-list li a:hover {
+  color: #ff4646;                       /* hover akcent */
+}
+
+.tagline {
+  color: #ff4646;                       /* červený motto text */
+}
+
+.phone a {
+  color: #ff4646;                       /* červené číslo */
+}
+.phone a:hover {
+  color: #cc0000;                       /* tmavší červená při hoveru */
+}
+
+/* Tlačítko šipky */
+.toggle-button {
+  background-color: #ff4646;            /* základní červená */
+}
+.arrow {
+  border-left-color: #ffffff;           /* bílá šipka uvnitř červeného tlačítka */
+}
+
+/* Klíčové snímky zůstanou stejné */
+/* … tvoje @keyframes pulse a bgPulse … */
+
+/* Responzivní úpravy už jsou v stylu – font a barvy takhle lépe sednou webu */
+
+/* 1) Plynulý přechod transformace pro šipku */
+.arrow {
+  transition: transform 0.3s ease;
+}
+
+/* 2) Efekt při najetí myší – mírné přiblížení */
+.toggle-button:hover .arrow {
+  transform: scale(1.2);
+}
+
+/* 3) Otočení šipky při otevřeném panelu */
+.side-panel.open .toggle-button .arrow {
+  transform: rotate(180deg);
+}
+
+/* 4) Kombinace při hoveru a otevřeném stavu */
+.side-panel.open .toggle-button:hover .arrow {
+  transform: rotate(180deg) scale(1.2);
+}
+
+/* Ujistěte se, že je to na samém konci styl.css */
+
+/* 1) Potřebujeme, aby šipka byla inline-block a měla střed jako osu otáčení */
+.arrow {
+  display: inline-block;
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+/* 2) Při hoveru na tlačítko se šipka zvětší */
+.toggle-button:hover .arrow {
+  transform: scale(1.2);
+}
+
+/* 3) Když je panel otevřený, otočíme šipku o 180° */
+.side-panel.open .toggle-button .arrow {
+  transform: rotate(180deg);
+}
+
+/* 4) A když navíc najedeme myší, otočená a zvětšená */
+.side-panel.open .toggle-button:hover .arrow {
+  transform: rotate(180deg) scale(1.2);
+}
+/* === Boční panel – arrow hover & flip === */
+
+/* 1) Ujistíme se, že šipka může rotovat okolo svého středu */
+.side-panel .arrow {
+  display: inline-block;
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+/* 2) Hover-efekt: mírné přiblížení šipky */
+.toggle-button:hover .arrow {
+  transform: scale(1.2);
+}
+
+/* 3) Pulzování šipky (pokud ještě není) */
+@keyframes pulse {
+  0%,100% { transform: scale(1);   opacity: 1; }
+  50%     { transform: scale(1.2); opacity: 0.7; }
+}
+.side-panel .arrow {
+  animation: pulse 1.5s infinite;
+}
+
+/* 4) Po rozbalení panelu otočíme šipku o 180° */
+.side-panel.open .toggle-button .arrow {
+  transform: rotate(180deg);
+}
+
+/* 5) Kombinace hover + otevřený panel */
+.side-panel.open .toggle-button:hover .arrow {
+  transform: rotate(180deg) scale(1.2);
+}
+
+/* ——— Šipka: pulz ↔ otočení ——— */
+
+/* 1) Základní styl šipky */
+.side-panel .arrow {
+  display: inline-block;         /* nutné pro transform */
+  transform-origin: center;
+  transition: transform 0.3s ease;
+  animation: pulse 1.5s infinite; /* pulsování jen v zavřeném stavu */
+}
+
+/* 2) Hover: šipka se přiblíží */
+.toggle-button:hover .arrow {
+  transform: scale(1.2);
+}
+
+/* 3) V otevřeném stavu vypneme pulzování a otočíme šipku o 180° */
+.side-panel.open .arrow {
+  animation: none;
+  transform: rotate(180deg);
+}
+
+/* 4) Pokud navíc najedeme myší na rozbalený panel, zvětšíme otočenou šipku */
+.side-panel.open .toggle-button:hover .arrow {
+  transform: rotate(180deg) scale(1.2);
+}
+
+/* Klíčové snímky pulsování */
+@keyframes pulse {
+  0%,100% { transform: scale(1);   opacity: 1; }
+  50%     { transform: scale(1.2); opacity: 0.7; }
+}
+
+
