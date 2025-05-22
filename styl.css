@@ -225,23 +225,29 @@ section {
 
 
 /* 11) Služby */
-.services {
-  padding: 60px 20px;
-  background-color: #f9f9f9; /* Lehce odlišné pozadí pro sekci služeb */
+.sluzby, .services { /* Sekce Služby */
+  font-family: 'Poppins', sans-serif;
+  padding: 40px 20px;
+  background-color: #f8f8f8;
+  text-align: center;
 }
+
 .services .container {
   max-width: 1200px;
   margin: 0 auto;
 }
-.services h2 {
-  font-size: 2.5rem;
-  text-align: center;
-  margin-bottom: 30px;
+.kontakt h2,
+.services h2,
+.technika h2 {
   color: var(--primary-color);
+  font-size: 2em;
+  margin-bottom: 10px;
+  text-align: center;
 }
+
 .services .intro { /* Úvodní text v sekci služeb */
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1.0rem;
   line-height: 1.8;
   margin-bottom: 40px;
   color: var(--text-color);
@@ -274,25 +280,26 @@ section {
 
 
 /* Styly pro nadpisy v sekci Technika */
+.kontakt h2,
+.services h2,
 .technika h2 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 2.2em;
-  text-align: center;
-  margin-bottom: 10px;
   color: var(--primary-color);
-}
-.technika .intro {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1em;
+  font-size: 2em;
+  margin-bottom: 10px;
   text-align: center;
-  max-width: 800px;
-  margin: 0 auto 40px auto;
-  color: #444;
-  line-height: 1.6;
 }
+ 
+.technika { /* Sekce Technika */
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.0rem;
+  padding: 40px 20px;
+  background-color: #f8f8f8;
+  text-align: center;
+}
+
 .technika h3 { /* Podnadpisy v sekci Technika (např. Rypadla...) */
   font-family: 'Poppins', sans-serif;
-  font-size: 1.6em;
+  font-size: 1.2em;
   margin-top: 60px; /* Větší horní mezera */
   margin-bottom: 20px;
   color: var(--primary-color);
@@ -304,15 +311,20 @@ section {
 
 /* 13) Kontakt */
 .kontakt { /* Sekce Kontakt */
+  font-family: 'Poppins', sans-serif;
   padding: 40px 20px;
   background-color: #f8f8f8; /* Světle šedé pozadí */
   text-align: center;
 }
-.kontakt h2 {
+.kontakt h2,
+.services h2,
+.technika h2 {
   color: var(--primary-color);
   font-size: 2em;
   margin-bottom: 10px;
+  text-align: center;
 }
+
 .kontakt-info { /* Bloky s kontaktními informacemi */
   margin-bottom: 30px;
   line-height: 1.6;
