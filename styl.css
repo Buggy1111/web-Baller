@@ -1254,3 +1254,83 @@ html{
 }
 
 
+ /* Kontakt Formulář - styl v barvách webu */
+    .kontakt-formular {
+      background-color: #fff;
+      padding: 3rem 1rem;
+    }
+    .kontakt-formular .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .kontakt-formular h2 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 2rem;
+      color: #d32f2f;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    #contact-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    #contact-form label {
+      flex: 1 1 100%;
+      font-weight: 500;
+      color: #333;
+    }
+    #contact-form input,
+    #contact-form textarea {
+      flex: 1 1 100%;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      color: #333;
+    }
+    #contact-form input:focus,
+    #contact-form textarea:focus {
+      outline: none;
+      border-color: #d32f2f;
+      box-shadow: 0 0 0 2px rgba(211,47,47,0.2);
+    }
+    .g-recaptcha {
+      margin-top: 1rem;
+    }
+    #contact-form button {
+      flex: 1 1 100%;
+      padding: 0.75rem 1.5rem;
+      background-color: #d32f2f;
+      color: #fff;
+      font-size: 1.1rem;
+      font-family: 'Poppins', sans-serif;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      align-self: center;
+    }
+    #contact-form button:hover {
+      background-color: #b71c1c;
+    }
+    .form-message {
+      margin-top: 1rem;
+      text-align: center;
+      font-weight: 500;
+      color: #388e3c;
+    }
+    @media (min-width: 600px) {
+      #contact-form label, #contact-form input, #contact-form textarea {
+        flex: 1 1 48%;
+      }
+      #contact-form textarea {
+        flex: 1 1 100%;
+      }
+      #contact-form button {
+        flex: 1 1 auto;
+        max-width: 200px;
+      }
+    }
+

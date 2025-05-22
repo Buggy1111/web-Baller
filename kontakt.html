@@ -111,10 +111,39 @@
   ]
 }
 </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
 </head>
 <script src="nav_final.js" defer></script>
 <script src="nav_mobile.js" defer></script>
 <body>
+<!-- Side Panel -->
+<div class="side-panel" id="sidePanel">
+  <div class="panel-content">
+    <strong>Pracujeme v Moravskoslezském a Olomouckém kraji</strong><br>
+    <small>Případně i po celé ČR</small>
+    <p class="services-title"><strong>Nabízíme:</strong></p>
+    <ul class="services-list">
+      <li><a href="sluzby.html#vykopy">Zemní a výkopové práce</a></li>
+      <li><a href="sluzby.html#spodni-stavby">Spodní stavby</a></li>
+      <li><a href="sluzby.html#demolice">Demoliční činnost</a></li>
+      <li><a href="sluzby.html#autodoprava">Autodoprava</a></li>
+      <li><a href="sluzby.html#kontejnery">Kontejnerová doprava</a></li>
+      <li><a href="sluzby.html#preprava-techniky">Přeprava techniky</a></li>
+      <li><a href="sluzby.html#inzenyrske-site">Inženýrské sítě</a></li>
+      <li><a href="sluzby.html#kanalizace">Kanalizace</a></li>
+      <li><a href="sluzby.html#ukladani-kamenu">Ukládání kamenů</a></li>
+    </ul>
+    <p class="tagline">Těšíme se na spolupráci s vámi!</p>
+    <strong>Zbyněk Baller</strong><br>
+    <a href="tel:+420604682281" class="phone">📞 +420 604 682 281</a>
+    <a href="kontakt.html#kontakt-form" id="contactLink"><i class="fa fa-envelope" aria-hidden="true"></i> Kontakt</a>
+
+  </div>
+  <div class="toggle-button" onclick="togglePanel()">
+    <div class="arrow"></div>
+  </div>
+</div>
+
 <header class="hlavicka">
 <div class="container">
 <img alt="Logo Stavby Baller s.r.o." class="logo" src="obrazky/logo_transparent.webp" loading="lazy"/>
@@ -141,7 +170,7 @@
 <section class="kontakt" id="kontakt" style="background-color: rgb(245, 245, 245);">
 <div class="container">
 <h2>Kontaktujte nás</h2>
-<p>Máte zájem o naše služby? Neváhejte nás kontaktovat</p>
+
 <div class="kontakt-info">
 <h3>Stavby Baller s.r.o.</h3>
 <p><strong>Zbyněk Baller</strong></p>
@@ -155,8 +184,35 @@
 <p>Tel: <a href="tel:+420602531631">602 531 631</a></p>
 <p>E-mail: <a href="mailto:ballerova.ilona@stavbyballer.cz">ballerova.ilona@stavbyballer.cz</a></p>
 </div>
-<div class="kontakt-mapa">
-  <iframe 
+<!-- Kontakt Formulář -->
+    <section class="kontakt-formular" id="kontakt-formular">
+      <div class="container">
+        <h2>Pošlete nám zprávu</h2>
+        <form id="contact-form" action="send_email.php" method="POST">
+          <label for="name">Jméno*</label>
+          <input type="text" id="name" name="name" required>
+
+          <label for="email">E-mail*</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="phone">Telefon</label>
+          <input type="tel" id="phone" name="phone">
+
+          <label for="message">Zpráva*</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+
+          <div class="g-recaptcha" data-sitekey="6LcyyUMrAAAAA0cqDYkFxCjIUaOqIDUeLeCN_z2u"></div>
+          <button type="submit">Odeslat</button>
+        </form>
+        <div id="form-message" class="form-message"></div>
+      </div>
+    </section>
+  <div class="kontakt-mapa">
+ <section class="kontakt" id="kontakt" style="background-color: rgb(245, 245, 245);">
+<div class="container">
+<h2>Mapa GPS</h2>
+
+    <iframe 
     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2562.8627759158725!2d17.818215015716906!3d49.65693077937312!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47121e4b25a08f65%3A0xd6a0e4c6ea35a8fb!2sSp%C3%A1lov%2030%2C%20742%2037%20Sp%C3%A1lov!5e0!3m2!1scs!2scz!4v1715851520000!5m2!1scs!2scz" 
     width="100%" 
     height="300" 
@@ -166,6 +222,8 @@
     referrerpolicy="no-referrer-when-downgrade"></iframe>
 </div>
 </section>
+    
+
 </main>
 <footer>
 <div class="container">
@@ -191,5 +249,37 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 <script src="sidepanel.js" defer></script>
 <script src="nav.js" defer></script>
+
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script>
+  document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var form = this;
+    var data = new FormData(form);
+    fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: {'Accept':'application/json'}
+    })
+    .then(r => r.json())
+    .then(json => {
+      if (json.success) {
+        document.getElementById('form-message').textContent = 'Děkujeme, zpráva byla odeslána.';
+        form.reset();
+        grecaptcha.reset();
+      } else {
+        document.getElementById('form-message').textContent = 'Chyba: ' + (json.error || 'Ověření selhalo.');
+        grecaptcha.reset();
+      }
+    })
+    .catch(() => {
+      document.getElementById('form-message').textContent = 'Omlouváme se, něco se pokazilo.';
+      grecaptcha.reset();
+    });
+  });
+  </script>
+
+<script src="sidepanel.js"></script>
+<script src="nav.js"></script>
 </body>
 </html>
