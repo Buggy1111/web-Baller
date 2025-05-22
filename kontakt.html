@@ -200,9 +200,7 @@
 
           <label for="message">Zpráva*</label>
           <textarea id="message" name="message" rows="5" required></textarea>
-
-          <div class="g-recaptcha" data-sitekey="6LcyyUMrAAAAA0cqDYkFxCjIUaOqIDUeLeCN_z2u"></div>
-          <button type="submit">Odeslat</button>
+<button type="submit">Odeslat</button>
         </form>
         <div id="form-message" class="form-message"></div>
       </div>
@@ -249,9 +247,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 <script src="sidepanel.js" defer></script>
 <script src="nav.js" defer></script>
-
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  <script>
+<script>
   document.getElementById('contact-form').addEventListener('submit', function(e) {
     e.preventDefault();
     var form = this;
@@ -266,16 +262,13 @@ document.addEventListener("DOMContentLoaded", function() {
       if (json.success) {
         document.getElementById('form-message').textContent = 'Děkujeme, zpráva byla odeslána.';
         form.reset();
-        grecaptcha.reset();
-      } else {
+} else {
         document.getElementById('form-message').textContent = 'Chyba: ' + (json.error || 'Ověření selhalo.');
-        grecaptcha.reset();
-      }
+}
     })
     .catch(() => {
       document.getElementById('form-message').textContent = 'Omlouváme se, něco se pokazilo.';
-      grecaptcha.reset();
-    });
+});
   });
   </script>
 

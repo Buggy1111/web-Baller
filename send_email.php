@@ -6,22 +6,6 @@ $name    = trim($_POST['name'] ?? '');
 $email   = trim($_POST['email'] ?? '');
 $phone   = trim($_POST['phone'] ?? '');
 $message = trim($_POST['message'] ?? '');
-$captcha = $_POST['g-recaptcha-response'] ?? '';
-
-// Ověření reCAPTCHA
-$secretKey = '6LcyyUMrAAAAAPjIXfUVXE6isrg7e2iC3p4oHziml';
-$verifyUrl = 'https://www.google.com/recaptcha/api/siteverify';
-$response = file_get_contents($verifyUrl . '?' . http_build_query([
-  'secret'   => $secretKey,
-  'response' => $captcha,
-  'remoteip' => $_SERVER['REMOTE_ADDR']
-]));
-$respData = json_decode($response, true);
-if (empty($respData['success']) || $respData['success'] !== true) {
-  echo json_encode(['success' => false, 'error' => 'Neplatné ověření reCAPTCHA.']);
-  exit;
-}
-
 // Základní validace
 if (!$name || !$email || !$message) {
   echo json_encode(['success' => false, 'error' => 'Vyplňte prosím všechna povinná pole.']);
